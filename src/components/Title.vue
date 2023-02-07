@@ -1,30 +1,15 @@
 <template>
-    <body>
-        <h1>  {{ content }}</h1>
-      
-    </body>
-
+  <h1 class="text-danger">{{ content }}</h1>
 </template>
 
 <script>
-export default{
-    name:'Title',
-    data(){
-        return {
-            content:'Hell Cinema'
-            
-        }
-    }
-}
+export default {
+  name: "Title",
+  data() {
+    return {
+      content: "CinemaHall",
+    };
+  },
+};
 </script>
-<style>
-body{
-background-image:url(../img/back.jpg);
-background-size: cover;
-}
-h1{
-    color: red;
-}
-    
-
-</style>
+<style></style>
