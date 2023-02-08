@@ -4,7 +4,7 @@
   >
     <div class="row">
       <div class="col-6">
-        <form @submit.prevent="register">
+        <form>
           <label for="" class="text-light">name</label>
           <div class="input-group mb-3">
             <input
@@ -32,19 +32,11 @@
               class="form-control text-white bg-dark"
               placeholder="HH..."
             />
-            <button @onclick="register"  class="btn btn-primary" type="submit">
+            <button @click="register()" type="button" class="btn btn-primary">
               create accounte
             </button>
           </div>
-
         </form>
-
-        <div>
-          <h1>
-            {{ reference }}
-          </h1>
-        </div>
-
 
         <RouterLink to="/" class="text-danger"
           ><button class="btn btn-primary" type="submit">
@@ -60,42 +52,45 @@
 </template>
 
 <script>
-import axios from 'axios';
-export default{
-  data(){
+import axios from "axios";
+export default {
+  data() {
     return {
-      reference:"",
-      form:{
-        email:"",
-        name:"",
-        CNI:""
-      }
-    }
+      email: "",
+      name: "",
+      CNI: "",
+    };
   },
-  methods:{
-       async register(){
-          // var fd=new FormData();
-          // fd.append('email',this.email)
-          // fd.append('name',this.name)
-          // fd.append('CNI',this.CNI)
+  methods: {
+    register() {
+      const form = new FormData();
+      form.append("name", this.name);
+      form.append("email", this.email);
+      form.append("CNI", this.CNI);
+      if (this.name != "" && this.email != "" && this.CNI) {
+        axios.post("http://localhost/CineHall/users/register",form)
+        .then(res => {
+            // after sucess
+            console.log(res.data);
+            // alert(console.log(res));
+            // this.reset();
+            // this.$router.push('/');
 
-          try{
-            axios
-            .post('http://localhost/CineHall/users/register',JSON.stringify(this.form))
-            .then((res => this.reference = res.data.reference)
-            .catch(function (error){
-            console.log(error)})
-                //  alert( console.log(data.res))
-                // this.$router.push({ path: '/home' });
-
-            )}
-            catch (err){
-                console.error(err);
-            }
-          }
-
-        }
+          })
+          .catch((err) => {
+            // on error
+            // alert(err.Error);
+            console.log(err);
+          });
+      }else{
+                  alert("erreur");
       }
+    },
+    reset() {
+      (this.email = ""), (this.password = "");
+    },
+  },
+};
 </script>
 <style>
 img {
