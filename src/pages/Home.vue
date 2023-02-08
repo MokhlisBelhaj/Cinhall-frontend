@@ -23,7 +23,7 @@
           </RouterLink>
           
         </div>
-            <RouterLink to="/films" class="text-danger mx-auto"
+            <RouterLink to="/register" class="text-danger mx-auto"
           ><button class="btn btn-primary  " type="submit">
             new compte
           </button></RouterLink>
@@ -34,12 +34,10 @@
 
 <script>
 import Title from "@/components/Title.vue";
-export default {
-  name: "Home",
-  components: {
-    Title,
-  },
-};
+
+
+
+
 </script>
 <style>
 img {

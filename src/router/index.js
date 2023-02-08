@@ -1,7 +1,7 @@
 import { createRouter,createWebHistory } from "vue-router";
 
 import Home from "@/pages/Home.vue";
-import Films from "@/pages/Films.vue";
+import register from "@/pages/register.vue";
 import reservation from "@/pages/reservation.vue";
 
 const routes =[
@@ -10,8 +10,8 @@ const routes =[
         component:Home,
     },
     {
-        path:'/films',
-        component:Films,
+        path:'/register',
+        component:register,
     },
     {
         path:'/reservation',
