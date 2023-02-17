@@ -38,11 +38,11 @@
           </div>
         </form>
 
-        <RouterLink to="/" class="text-danger"
-          ><button class="btn btn-primary" type="submit">
+        <RouterLink to="/" class="text-danger">
+          <button @click="" class="btn btn-primary" type="submit">
             login
-          </button></RouterLink
-        >
+          </button>
+          </RouterLink>
       </div>
       <div class="col-6">
         <img src="../../public/img/logo1.png" alt="" />
@@ -53,6 +53,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
@@ -62,6 +63,7 @@ export default {
     };
   },
   methods: {
+    
     register() {
       const form = new FormData();
       form.append("name", this.name);
@@ -72,9 +74,10 @@ export default {
         .then(res => {
             // after sucess
             console.log(res.data);
-            // alert(console.log(res));
+            this.$swal('your token is : '+ res.data.reference);
+            // alert('your token is : '+ res.data.reference);
             // this.reset();
-            // this.$router.push('/');
+             this.$router.push('/');
 
           })
           .catch((err) => {
